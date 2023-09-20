@@ -17,21 +17,9 @@ struct Date {
   int year;
   int hour;
   int minute;
-  bool operator<(const Date &other) const {
-    if (year < other.year)
-      return true;
-    if (year >= other.year)
-      return false;
-    if (month < other.month)
-      return true;
-    if (month >= other.month)
-      return false;
-    return day < other.day;
-  }
-  bool operator>(const Date &other) const { return other < *this; }
-  bool operator==(const Date &other) const {
-    return (!(other < *this) && !(*this < other));
-  }
+  bool operator<(const Date &other) const;
+  bool operator>(const Date &other) const;
+  bool operator==(const Date &other) const;
 };
 
 struct Event {
@@ -44,13 +32,8 @@ struct FullName {
   std::string firstName;
   std::string lastName;
   std::string middleName;
-  bool operator==(const FullName &other) const {
-    return (firstName == other.firstName && lastName == other.lastName &&
-            middleName == other.middleName);
-  }
-  std::string toString() const {
-    return lastName + " " + firstName + " " + middleName;
-  }
+  bool operator==(const FullName &other) const;
+  std::string toString() const;
 };
 
 struct Birthday {

@@ -6,6 +6,33 @@ int main() {
 
   return 0;
 }
+bool Date::operator<(const Date &other) const {
+  if (year < other.year)
+    return true;
+  if (year >= other.year)
+    return false;
+  if (month < other.month)
+    return true;
+  if (month >= other.month)
+    return false;
+  return day < other.day;
+}
+
+bool Date::operator>(const Date &other) const { return other < *this; }
+
+bool Date::operator==(const Date &other) const {
+  return (!(other < *this) && !(*this < other));
+}
+
+std::string FullName::toString() const {
+  return lastName + " " + firstName + " " + middleName;
+}
+
+bool FullName::operator==(const FullName &other) const {
+  return (firstName == other.firstName && lastName == other.lastName &&
+          middleName == other.middleName);
+}
+
 Model::Model() {}
 
 void Model::addEvent(const Event &event) { events.push_back(event); }
